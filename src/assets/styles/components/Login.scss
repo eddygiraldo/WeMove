@@ -1,0 +1,45 @@
+@import "../Variables.scss";
+
+.login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  text-align: center;
+}
+
+.login-message {
+  width: 35%;
+  height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(to right, $first-color, $second-color);
+  color: white;
+  padding: 200px 20px;
+}
+
+.login-message p {
+  font-size: 24px;
+  padding-bottom: 40px;
+}
+
+.login-form {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.signup-form .btn {
+  margin-top: 20px;
+}
+
+.social-media span {
+  padding: 5px;
+}

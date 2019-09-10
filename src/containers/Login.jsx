@@ -1,35 +1,37 @@
 import React from 'react';
-import '../assets/styles/App.scss';
+import '../assets/styles/components/Login.scss';
+import FacebookIcon from '../assets/static/facebook-icon.svg';
+import GmailIcon from '../assets/static/gmail-icon.svg';
 
-const HelloWorld = () => (
-  <div class="login">
-    <div class="login-message">
-      <img src="" clas="login-logo" alt=""/>
+const Login = () => (
+  <div className="login">
+    <div className="login-message">
+      <a href="/" className="login-logo"><img src=""  alt=""/>Volver</a>
+      
       <h2>Bienvenido de nuevo</h2>
       <p>
         Si ya tienes una cuenta, sólo inicia sesión.
       </p>
-
-      <button class="btn btn-transparent">
+      <button className="btn btn-transparent">
         Ingresar
       </button>
     </div>
-    <div class="login-form">
+    <div className="login-form">
       <h2>
         Crea una cuenta gratis
       </h2>
       <h3>
         Registrate usando redes sociales
       </h3>
-      <div class="social-media">
-        <span>Facebook</span>
-        <span>Twitter</span>
+      <div className="social-media">
+        <span><img src={FacebookIcon} alt="" width="30px" /></span>
+        <span><img src={GmailIcon} alt="" width="30px" /></span>
       </div>
       <h3>O usa un correo para el registro</h3>
-      <form action="#" class="signup-form">
+      <form action="#" className="signup-form">
         <input 
           type="text"
-          class="input-generic"
+          className="input-generic"
           placeholder="Nombre"
         />
 
@@ -53,5 +55,4 @@ const HelloWorld = () => (
   </div>
 )
 
-
-export default HelloWorld;
+export default Login;
