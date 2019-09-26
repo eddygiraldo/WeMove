@@ -3,21 +3,37 @@ import '../assets/styles/components/Login.scss';
 import FacebookIcon from '../assets/static/facebook-icon.svg';
 import GmailIcon from '../assets/static/gmail-icon.svg';
 
-const Login = () => (
+const Register = () => (
   <div className="login">
+    <div className="login-message">
+      <a href="/" className="login-logo"><img src="" alt="" />Volver</a>
+
+      <h2>Bienvenido de nuevo</h2>
+      <p>
+        Si ya tienes una cuenta, sólo inicia sesión.
+      </p>
+
+      <a href="/login" className="btn btn-transparent">Ingresar</a>
+    </div>
     <div className="login-form">
       <h2>
-        Ingrese a su cuenta
+        Crea una cuenta gratis
       </h2>
       <h3>
-        Ingresa usando redes sociales
+        Registrate usando redes sociales
       </h3>
       <div className="social-media">
         <span><img src={FacebookIcon} alt="" width="30px" /></span>
         <span><img src={GmailIcon} alt="" width="30px" /></span>
       </div>
-      <h3>O</h3>
+      <h3>O usa un correo para el registro</h3>
       <form action="#" className="signup-form">
+        <input
+          type="text"
+          className="input-generic"
+          placeholder="Nombre"
+        />
+
         <input
           type="email"
           class="input-generic"
@@ -31,22 +47,11 @@ const Login = () => (
         />
 
         <button class="btn btn-submit">
-          Ingresar
+          Registrarse
         </button>
       </form>
-    </div>
-
-    <div className="login-message">
-      <a href="/" className="login-logo"><img src="" alt="" />Volver</a>
-
-      <h2>¿Nuevo aquí?</h2>
-      <p>
-        Registrate y descubre gran cantidad de grandes oportunidades.
-      </p>
-      
-      <a className="btn btn-transparent" href="/register">Registrarse</a>
     </div>
   </div>
 )
 
-export default Login;
+export default Register;
