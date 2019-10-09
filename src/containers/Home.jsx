@@ -7,8 +7,10 @@ import '../assets/styles/App.scss';
 const Home = () => (
   <div className="App">
     <Header />
-    <Sidebar />
-    <MapContainer/>
+    <div className="Main">
+      <Sidebar />
+      <MapContainer/>
+    </div>
   </div>
 );
 
