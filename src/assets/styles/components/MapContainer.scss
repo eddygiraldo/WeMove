@@ -2,10 +2,10 @@
 
 .layout-map{
     //margin-left: 460px;
-    flex: 1 1 auto;
+    //flex: 1 1 auto;
+    display: flex;
     position: relative;
     top: 85px;
-    //max-width: 63%;
-    //overflow: hidden;
+    overflow: hidden;
 }
 
