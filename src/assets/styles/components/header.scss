@@ -1,0 +1,30 @@
+@import "../Variables.scss";
+
+.header {
+    display: flex;
+    align-items: center;
+    background: #FBFBFB;
+    height: 80px;
+    padding: 0 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.header-nav a{
+    text-decoration: none;
+    cursor: pointer;
+    color: $third-color;
+}
+
+.header-logo {
+    height: 100px;
+    width: auto;
+}
+
