@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
 }
 
 h2 {
@@ -15,11 +16,19 @@ h3 {
   font-weight: bold;
 }
 
+a {
+  color: $first-color;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .btn {
   height: 80px;
   width: 250px;
   border-radius: 40px;  
-  font-size: 18px;  
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
@@ -28,6 +37,7 @@ h3 {
   display: inline-block;
   text-decoration: none;
   line-height: 3.8;
+  text-align: center;
 }
 
 .btn:hover {
@@ -46,25 +56,47 @@ h3 {
   background-color: $second-color;
 }
 
-.input-generic {
-  width: 60%;
-  height: 80px;
+.btn-small {
+  height: 50px !important;
+  width: 85% !important;
+  border: 2px solid white;
+  color: white;
+  background-color: $second-color;
+  line-height: 2.5 !important;
+}
+
+.input {
   background-color: #F5F5F5;
   border: 2px solid #E2E8DC;
   margin: 10px auto;
   padding-left: 20px;
-  border-radius: 35px;
   font-size: 20px;
   transition: 800ms;
   outline: none;
 }
 
-.input-generic:focus {
+.input-generic {
+  width: 60%;
+  height: 80px;
+  border-radius: 35px;
+}
+
+.input-small {
+  width: 80%;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.input:focus {
   background-color: white;
   border: 2px solid #E2E8DC;
 }
 
-.App {
+.app {
   display: flex;
   flex-flow: column;
+}
+
+.main {
+  display: flex;
 }

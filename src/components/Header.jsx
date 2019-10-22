@@ -1,14 +1,45 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import LogoBlack from '../assets/static/logo-black.png';
-import '../assets/styles/components/header.scss';
+import '../assets/styles/components/Header.scss';
 
-const Header = () => (
-  <div className="header">
-    <div className="header-nav">
-      <a href="/"><img src={LogoBlack} className="header-logo" alt="WeMove Logo"/></a>
-      <a href="/login">Iniciar Sesión</a>
+const Header = (props) => {
+  const { user } = props;
+  const hasUser = Object.keys(user).length > 0;
+
+  return (
+    <div className='header'>
+      <div className='header-nav'>
+        <Link to='/'>
+          <img
+            src={LogoBlack}
+            className='header-logo'
+            alt='WeMove Logo'
+          />
+        </Link>
+        {
+          hasUser ?
+            (
+              <Link to='/'>
+                Logout
+              </Link>
+            ) :
+            (
+              <Link to='/login'>
+                Iniciar Sesión
+              </Link>
+            )
+        }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, null)(Header);

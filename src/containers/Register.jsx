@@ -1,68 +1,76 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Login.scss';
 import FacebookIcon from '../assets/static/facebook-icon.svg';
 import GmailIcon from '../assets/static/gmail-icon.svg';
-import LogoBlack from '../assets/static/logo-black.png';
+import LogoWhite from '../assets/static/logo-white.png';
 
 const Register = () => (
   <div>
 
-    <a href="/" className="login-logo">
-      <img
-        src={LogoBlack}
-        alt="Logo"
-        className="header-logo"
-      />
-    </a>
+    <Link to='/'>
+      <div className='login-logo'>
+        <img
+          src={LogoWhite}
+          alt='Logo'
+          className='header-logo'
+        />
+      </div>
+    </Link>
 
-    <div className="login">
-      <div className="login-message">
+    <div className='login'>
+      <div className='login-message'>
 
         <h2>Bienvenido de nuevo</h2>
         <p>
           Si ya tienes una cuenta, sólo inicia sesión.
-      </p>
+        </p>
 
-        <a href="/login" className="btn btn-transparent">Ingresar</a>
+        <Link to='/login'>
+          <div className='btn btn-transparent'>
+            Ingresar
+          </div>
+        </Link>
+
       </div>
-      <div className="login-form">
+      <div className='login-form'>
         <h2>
           Crea una cuenta gratis
-      </h2>
+        </h2>
         <h3>
           Registrate usando redes sociales
-      </h3>
-        <div className="social-media">
-          <span><img src={FacebookIcon} alt="" width="30px" /></span>
-          <span><img src={GmailIcon} alt="" width="30px" /></span>
+        </h3>
+        <div className='social-media'>
+          <span><img src={FacebookIcon} alt='' width='30px' /></span>
+          <span><img src={GmailIcon} alt='' width='30px' /></span>
         </div>
         <h3>O usa un correo para el registro</h3>
-        <form action="#" className="signup-form">
+        <form action='#' className='signup-form'>
           <input
-            type="text"
-            className="input-generic"
-            placeholder="Nombre"
+            type='text'
+            className='input input-generic'
+            placeholder='Nombre'
           />
 
           <input
-            type="email"
-            class="input-generic"
-            placeholder="Correo"
+            type='email'
+            className='input input-generic'
+            placeholder='Correo'
           />
 
           <input
-            type="password"
-            class="input-generic"
-            placeholder="Contraseña"
+            type='password'
+            className='input input-generic'
+            placeholder='Contraseña'
           />
 
-          <button class="btn btn-submit">
+          <button className='btn btn-submit' type='button'>
             Registrarse
-        </button>
+          </button>
         </form>
       </div>
     </div>
   </div>
-)
+);
 
 export default Register;
