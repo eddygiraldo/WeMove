@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import LogoBlack from '../assets/static/logo-black.png';
+import LogoWhite from '../assets/static/logo-white.png';
 import '../assets/styles/components/Header.scss';
 
 const Header = (props) => {
@@ -13,7 +13,7 @@ const Header = (props) => {
       <div className='header-nav'>
         <Link to='/'>
           <img
-            src={LogoBlack}
+            src={LogoWhite}
             className='header-logo'
             alt='WeMove Logo'
           />

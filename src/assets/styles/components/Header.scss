@@ -3,7 +3,8 @@
 .header {
     display: flex;
     align-items: center;
-    background: #FBFBFB;
+    background: linear-gradient(to right, $first-color, $second-color);
+    color: #FBFBFB;
     height: 80px;
     padding: 0 20px;
     box-shadow: 0 0 10px rgba(0,0,0,.2);
@@ -20,7 +21,7 @@
 .header-nav a{
     text-decoration: none;
     cursor: pointer;
-    color: $third-color;
+    color: #FBFBFB;
 }
 
 .header-logo {
