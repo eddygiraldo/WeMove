@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import RouteForm from './RouteForm';
 import Favorites from './Favorites';
-import SearchIcon from '../assets/static/search-icon.svg';
-import Laughing from '../assets/static/laughing-face.svg';
+import searchIcon from '../assets/static/search-icon.svg';
+import laughingIcon from '../assets/static/laughing-face.svg';
+import optionsIcon from '../assets/static/options.svg';
+import closeIcon from '../assets/static/close.svg';
 import '../assets/styles/components/Sidebar.scss';
 
 const Sidebar = (props) => {
@@ -17,6 +19,7 @@ const Sidebar = (props) => {
     setState({
       ...sidebarState,
       hasVisibleOptions: !sidebarState.hasVisibleOptions,
+      hasVisibleRoutes: true,
     });
   };
 
@@ -44,9 +47,12 @@ const Sidebar = (props) => {
         tabIndex={0}
         onClick={handleOptionsClick}
       >
-        <span>
-          X
-        </span>
+        <img
+          className='sidebar-icon'
+          src={!sidebarState.hasVisibleOptions ? optionsIcon : closeIcon}
+          alt=''
+          width='25px'
+        />
       </div>
 
       {
@@ -57,10 +63,11 @@ const Sidebar = (props) => {
                 onClick={handleRouteOptionClick}
                 role='button'
                 tabIndex='0'
+                className='sidebar-option'
               >
                 <img
                   className='sidebar-icon'
-                  src={SearchIcon}
+                  src={searchIcon}
                   alt=''
                 />
                 ¿A dónde vamos?
@@ -69,10 +76,11 @@ const Sidebar = (props) => {
                 onClick={handleFavoritesOptionClick}
                 role='button'
                 tabIndex='0'
+                className='sidebar-option'
               >
                 <img
                   className='sidebar-icon'
-                  src={Laughing}
+                  src={laughingIcon}
                   alt=''
                 />
                 Lugares Favoritos

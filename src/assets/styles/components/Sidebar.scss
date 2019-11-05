@@ -3,9 +3,9 @@
 .btn-options {
   z-index: 2;
   position: fixed;
-  margin: 15px 200px;
+  margin: 10px 200px;
   cursor: pointer;
-  background-color: red;
+  background-color: white;
   color: white;
 }
 
@@ -17,6 +17,10 @@
   border-radius: 20px;
   overflow: hidden;
   transition: 1s;
+}
+
+.sidebar-option {
+  display: flex;
 }
 
 .sidebar-menu {
@@ -40,6 +44,7 @@
 
 .sidebar-icon {
   margin: 5px;
+  width: 25px;
 }
 
 .sidebar-container {
