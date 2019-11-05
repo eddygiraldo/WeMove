@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../assets/styles/components/Sidebar.scss';
+import RouteForm from './RouteForm';
+import Favorites from './Favorites';
 import SearchIcon from '../assets/static/search-icon.svg';
 import Laughing from '../assets/static/laughing-face.svg';
+import '../assets/styles/components/Sidebar.scss';
 
 const Sidebar = (props) => {
+
   const [sidebarState, setState] = useState({
     hasVisibleOptions: false,
+    hasVisibleRoutes: false,
+    hasVisibleFavorites: false,
   });
 
   const handleOptionsClick = (event) => {
@@ -14,7 +18,22 @@ const Sidebar = (props) => {
       ...sidebarState,
       hasVisibleOptions: !sidebarState.hasVisibleOptions,
     });
-    console.log(sidebarState);
+  };
+
+  const handleRouteOptionClick = (event) => {
+    setState({
+      ...sidebarState,
+      hasVisibleRoutes: !sidebarState.hasVisibleRoutes,
+      hasVisibleFavorites: false,
+    });
+  };
+
+  const handleFavoritesOptionClick = (event) => {
+    setState({
+      ...sidebarState,
+      hasVisibleRoutes: false,
+      hasVisibleFavorites: !sidebarState.hasVisibleFavorites,
+    });
   };
 
   return (
@@ -34,34 +53,41 @@ const Sidebar = (props) => {
         sidebarState.hasVisibleOptions && (
           <div className='sidebar'>
             <div className='sidebar-menu'>
-              <Link to='/'>
-                <img className='sidebar-icon' src={SearchIcon} alt='' />
+              <div
+                onClick={handleRouteOptionClick}
+                role='button'
+                tabIndex='0'
+              >
+                <img
+                  className='sidebar-icon'
+                  src={SearchIcon}
+                  alt=''
+                />
                 ¿A dónde vamos?
-              </Link>
-              <Link to='/'>
-                <img className='sidebar-icon' src={Laughing} alt='' />
+              </div>
+              <div
+                onClick={handleFavoritesOptionClick}
+                role='button'
+                tabIndex='0'
+              >
+                <img
+                  className='sidebar-icon'
+                  src={Laughing}
+                  alt=''
+                />
                 Lugares Favoritos
-              </Link>
-            </div>
-            <div className='sidebar-container'>
-              <input
-                type='text'
-                name='origin'
-                className='input input-small'
-                placeholder='Origen'
-              />
-
-              <input
-                type='text'
-                name='detination'
-                className='input input-small'
-                placeholder='Destino'
-              />
-
-              <div className='btn btn-small'>
-                Ir
               </div>
             </div>
+            {
+              sidebarState.hasVisibleRoutes && (
+                <RouteForm />
+              )
+            }
+            {
+              sidebarState.hasVisibleFavorites && (
+                <Favorites />
+              )
+            }
           </div>
         )
       }

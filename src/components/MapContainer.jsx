@@ -1,25 +1,117 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-import '../assets/styles/components/MapContainer.scss';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import {
+  withGoogleMap,
+  GoogleMap,
+  DirectionsRenderer,
+  TrafficLayer,
+  Marker,
+} from 'react-google-maps';
+import { calledRequest, respondRoutesRequest } from '../actions';
 
-export class MapContainer extends Component {
-  render() {
-    const { google } = this.props;
+const MapGoogle = (props) => {
+  const { route, called } = props;
 
-    return (
-      <Map
-        className='layout-map'
-        google={google}
-        zoom={19}
-        initialCenter={{
-          lat: 4.6560663,
-          lng: -74.0595918,
-        }}
-      />
-    );
+  const [mapState, setMapState] = useState({
+    defaultCenter: new google.maps.LatLng(4.6560663, -74.0595918),
+    addNew: false,
+    newPosition: {},
+  });
+
+  const handleMapClick = (event) => {
+    setMapState({
+      ...mapState,
+      addNew: true,
+      newPosition: {
+        lat: event.pa.x,
+        lng: event.pa.y,
+      },
+    });
+    console.log(mapState);
+  };
+
+  const setGlobalState = () => {
+    props.calledRequest(true);
+    props.respondRoutesRequest(mapState.data);
+  };
+
+  const DirectionsService = new google.maps.DirectionsService();
+
+  if (route.origin && route.destination && !called) {
+    DirectionsService.route({
+      origin: route.origin,
+      destination: route.destination,
+      travelMode: google.maps.TravelMode.DRIVING,
+    }, (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        setMapState({
+          ...mapState,
+          data: result,
+        });
+
+        setGlobalState();
+
+      } else {
+        console.error(`error fetching directions ${result}`);
+      }
+    });
   }
-}
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDVQJCy4pG2Fpz-Ij98tdmKejfiwAMQqpg',
-})(MapContainer);
+  const GoogleMapWeMove = withGoogleMap(() => (
+    <GoogleMap
+      defaultCenter={mapState.defaultCenter}
+      defaultZoom={14}
+      onClick={handleMapClick}
+    >
+      {mapState.data && called && <DirectionsRenderer directions={mapState.data} />}
+      <TrafficLayer autoUpdate />
+      {mapState.addNew && (
+        <Marker
+          position={mapState.newPosition}
+        />
+      )}
+    </GoogleMap>
+  ));
+
+  return (
+    <GoogleMapWeMove
+      containerElement={
+        (
+          <div style={
+            {
+              height: '100hv',
+              width: '100wv',
+            }
+          }
+          />
+        )
+      }
+      mapElement={
+        (
+          <div style={
+            {
+              height: '91%',
+              width: '100%',
+              position: 'absolute',
+            }
+          }
+          />
+        )
+      }
+    />
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    route: state.route,
+    called: state.called,
+  };
+};
+
+const mapDispatchToProps = {
+  calledRequest,
+  respondRoutesRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapGoogle);

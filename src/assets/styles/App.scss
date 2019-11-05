@@ -17,12 +17,17 @@ h3 {
 }
 
 a {
-  color: $first-color;
+  color: #48556C;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+img {
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .btn {

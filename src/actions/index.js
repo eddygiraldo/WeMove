@@ -3,3 +3,18 @@ export const loginRequest = (payload) => ({
   payload,
 });
 
+export const calledRequest = (payload) => ({
+  type: 'CALLED_REQUEST',
+  payload,
+});
+
+export const respondRoutesRequest = (payload) => ({
+  type: 'SERVICE_ROOTES_REQUEST',
+  payload,
+});
+
+export const routeRequest = (payload) => ({
+  type: 'ROUTE_REQUEST',
+  payload,
+});
+
