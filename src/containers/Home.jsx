@@ -8,9 +8,9 @@ const Home = () => (
   <div className='default-container'>
     <div className='card-container'>
       <div className='card-content'>
-        <h1>
+        <h2>
           Obtén la mejor ruta en tiempo real
-        </h1>
+        </h2>
         <img
           className='card-image'
           src={bestWave}
@@ -27,9 +27,9 @@ const Home = () => (
           alt='LiveMap'
         />
         <Link to='/livemap'>
-          <h1>
+          <h2>
             Ve a nuestro mapa en vivo para buscar tu mejor ruta
-          </h1>
+          </h2>
         </Link>
       </div>
     </div>
@@ -37,9 +37,9 @@ const Home = () => (
     <div className='card-container'>
       <div className='card-content'>
         <Link to='/livemap'>
-          <h1>
+          <h2>
             Observa tus rutas favoritas
-          </h1>
+          </h2>
         </Link>
         <img
           className='card-image'
