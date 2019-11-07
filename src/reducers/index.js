@@ -1,9 +1,20 @@
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
+      var names = action.payload
       return {
         ...state,
-        user: action.payload,
+        user: {
+          ...action.payload,
+        },
+      };
+    case 'REGISTER_REQUEST':
+      return {
+        ...state,
+        user: {
+          ...action.payload,
+          initials
+        },
       };
     case 'CALLED_REQUEST':
       return {

@@ -3,6 +3,11 @@ export const loginRequest = (payload) => ({
   payload,
 });
 
+export const registerRequest = (payload) => ({
+  type: 'REGISTER_REQUEST',
+  payload,
+});
+
 export const calledRequest = (payload) => ({
   type: 'CALLED_REQUEST',
   payload,

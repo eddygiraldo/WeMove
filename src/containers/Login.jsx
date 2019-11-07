@@ -11,6 +11,7 @@ const Login = (props) => {
 
   const [form, setValues] = useState({
     email: '',
+    initials: '',
   });
 
   const handleInput = (event) => {
@@ -22,7 +23,10 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest(form);
+    props.loginRequest({
+      ...form,
+      initials: form.email.charAt(0),
+    });
     props.history.push('/');
   };
 
