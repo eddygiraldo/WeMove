@@ -25,7 +25,7 @@ const Login = (props) => {
     event.preventDefault();
     props.loginRequest({
       ...form,
-      initials: form.email.charAt(0),
+      initials: form.email.charAt(0).toUpperCase(),
     });
     props.history.push('/');
   };

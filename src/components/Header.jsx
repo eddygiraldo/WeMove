@@ -21,8 +21,11 @@ const Header = (props) => {
         {
           hasUser ?
             (
-              <Link to='/'>
-                Logout
+              <Link
+                to='/'
+                className='header-logged-user'
+              >
+                {user.initials}
               </Link>
             ) :
             (

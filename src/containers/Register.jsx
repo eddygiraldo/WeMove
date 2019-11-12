@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { registerRequest } from '../actions';
 import '../assets/styles/components/Login.scss';
 import FacebookIcon from '../assets/static/facebook-icon.svg';
 import GmailIcon from '../assets/static/gmail-icon.svg';
@@ -8,11 +9,27 @@ import LogoWhite from '../assets/static/logo-white.png';
 
 const Register = (props) => {
 
+  const [form, setValues] = useState({
+    email: '',
+    name: '',
+    initials: '',
+  });
+
+  const handleInput = (event) => {
+    setValues({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest({
+    const names = form.name.split(' ');
+    let initials = names[0].charAt(0).toUpperCase();
+    initials += names[1] ? names[1].charAt(0).toUpperCase() : '';
+    props.registerRequest({
       ...form,
-      initials: form.email.charAt(0),
+      initials,
     });
     props.history.push('/');
   };
@@ -64,22 +81,28 @@ const Register = (props) => {
             <input
               type='text'
               className='input input-generic'
+              name='name'
+              onChange={handleInput}
               placeholder='Nombre'
             />
 
             <input
               type='email'
               className='input input-generic'
+              name='email'
+              onChange={handleInput}
               placeholder='Correo'
             />
 
             <input
               type='password'
               className='input input-generic'
+              name='input'
+              onChange={handleInput}
               placeholder='Contraseña'
             />
 
-            <button className='btn btn-submit' type='button'>
+            <button className='btn btn-submit' type='submit'>
               Registrarse
             </button>
           </form>
@@ -89,8 +112,8 @@ const Register = (props) => {
   );
 };
 
-setDispatchToProps = {
-
+const mapDispacthToProps = {
+  registerRequest,
 };
 
-export default connect(null, null)(Register);
+export default connect(null, mapDispacthToProps)(Register);

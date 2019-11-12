@@ -1,7 +1,6 @@
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
-      var names = action.payload
       return {
         ...state,
         user: {
@@ -13,7 +12,6 @@ const reducer = (state, action) => {
         ...state,
         user: {
           ...action.payload,
-          initials
         },
       };
     case 'CALLED_REQUEST':
