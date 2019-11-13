@@ -86,16 +86,18 @@ const Sidebar = (props) => {
                 Lugares Favoritos
               </div>
             </div>
-            {
-              sidebarState.hasVisibleRoutes && (
-                <RouteForm />
-              )
-            }
-            {
-              sidebarState.hasVisibleFavorites && (
-                <Favorites />
-              )
-            }
+            <div className='sidebar-container'>
+              {
+                sidebarState.hasVisibleRoutes && (
+                  <RouteForm />
+                )
+              }
+              {
+                sidebarState.hasVisibleFavorites && (
+                  <Favorites />
+                )
+              }
+            </div>
           </div>
         )
       }

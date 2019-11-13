@@ -57,7 +57,7 @@ const RouteForm = (props) => {
   autocompleteDestination.setFields(['address_components', 'formatted_address']);
 
   return (
-    <div className='sidebar-container'>
+    <>
       <input
         type='text'
         name='origin'
@@ -92,7 +92,7 @@ const RouteForm = (props) => {
       >
         Ir
       </div>
-    </div>
+    </>
   );
 };
 

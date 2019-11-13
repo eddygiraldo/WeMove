@@ -25,8 +25,8 @@ const reducer = (state, action) => {
         currentRoute: action.payload,
       };
     case 'ROUTE_REQUEST':
-      const exist = state.favorites.find((fav) => (fav.origin === action.payload.origin &&
-        fav.destination === action.payload.destination));
+      const exist = state.favorites.find((fav) => (action.payload.origin.includes(fav.origin) &&
+        action.payload.destination.includes(fav.destination)));
 
       let element = {};
       if (exist) {
@@ -35,10 +35,14 @@ const reducer = (state, action) => {
           count: exist.count + 1,
         };
       } else {
+        const originPlace = action.payload.origin.split(',');
+        const destinationPlace = action.payload.destination.split(',');
         element = {
           id: state.favorites.length + 1,
-          origin: action.payload.origin,
-          destination: action.payload.destination,
+          origin: originPlace[0],
+          originLocation: `${originPlace[1]}, ${originPlace[2]}`,
+          destination: destinationPlace[0],
+          destinationLocation: `${destinationPlace[1]}, ${destinationPlace[2]}`,
           count: 0,
         };
       }

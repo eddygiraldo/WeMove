@@ -22,7 +22,7 @@ const Header = (props) => {
           hasUser ?
             (
               <Link
-                to='/'
+                to='/profile'
                 className='header-logged-user'
               >
                 {user.initials}

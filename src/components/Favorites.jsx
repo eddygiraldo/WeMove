@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { routeRequest, calledRequest } from '../actions';
 
+import routeIcon from '../assets/static/route-icon.svg';
+import '../assets/styles/components/Favorites.scss';
+
 const Favorites = (props) => {
   const { favorites } = props;
 
@@ -15,10 +18,24 @@ const Favorites = (props) => {
   };
 
   return (
-    <div className='sidebar-container'>
+    <div className='favorites-container'>
       {favorites.sort((a, b) => b.count - a.count).map((favorite) => (
-        <div key={favorite.id}>
-          {`${favorite.origin} - ${favorite.destination}`}
+        <div className='favorite-route' key={favorite.id}>
+          <span className='favorite-icon-route'>
+            <img src={routeIcon} alt='Icon' />
+          </span>
+          <div>
+            <div className='favorite-place'>
+              <span>{favorite.origin}</span>
+              <span>{favorite.originLocation}</span>
+            </div>
+
+            <div className='favorite-place'>
+              <span>{favorite.destination}</span>
+              <span>{favorite.destinationLocation}</span>
+            </div>
+          </div>
+
           <div
             onClick={() => handleFavoriteClick(favorite.origin, favorite.destination)}
             role='button'
