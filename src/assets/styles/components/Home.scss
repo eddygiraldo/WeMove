@@ -2,10 +2,10 @@
 
 .default-container {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   background: white;
   padding: 50px 100px;
-  color: #48556C;
-  min-height: 95vh;
   box-sizing: border-box;
   @media screen and (max-width: $max-width) {
     padding: 20px;
@@ -13,19 +13,11 @@
 }
 
 .card-container {
-  border: 1px solid $first-color;
-  border-radius: 20px;
-  padding: 20px 30px;
   margin: 30px;
-  transition: 900ms;
   @media screen and (max-width: $max-width) {
     padding: 20px;
     margin: 10px;
   }
-}
-
-.card-container:hover {
-  transform: scale(1.01);
 }
 
 .card-content {
@@ -37,10 +29,33 @@
   }
 }
 
+.card-content-description {
+  width: 60%;
+  @media screen and (max-width: $max-width) {
+    width: 100%;
+  }
+}
+
+.card-content-buttons {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25px;
+}
+
+.card-content h2 {
+  font-weight: 900;
+}
+
+.card-content b {
+  color: $first-color;
+}
+
 .card-image {
-  padding: 20px;
+  padding: 10px;
   @media screen and (max-width: $max-width) {
     width: 90%;
-  }  
+    padding: 25px;
+  }
 }
 

@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { routeRequest, calledRequest } from '../actions';
 
-import routeIcon from '../assets/static/route-icon.svg';
+import starIcon from '../assets/static/star.svg';
 import '../assets/styles/components/Favorites.scss';
 
 const Favorites = (props) => {
-  const { favorites } = props;
+  const { favorites, user } = props;
+  const hasFavorites = Object.keys(favorites).length > 0;
+  const hasUser = Object.keys(user).length > 0;
 
   const handleFavoriteClick = (origin, destination) => {
     const data = {
@@ -18,41 +21,72 @@ const Favorites = (props) => {
   };
 
   return (
-    <div className='favorites-container'>
-      {favorites.sort((a, b) => b.count - a.count).map((favorite) => (
-        <div className='favorite-route' key={favorite.id}>
-          <span className='favorite-icon-route'>
-            <img src={routeIcon} alt='Icon' />
-          </span>
-          <div>
-            <div className='favorite-place'>
-              <span>{favorite.origin}</span>
-              <span>{favorite.originLocation}</span>
-            </div>
+    <>
+      {
+        hasUser ? (
+          <div className='favorites-container'>
+            {
+              hasFavorites ? (
+                <>
+                  {favorites.sort((a, b) => b.count - a.count).map((favorite) => (
+                    <div className='favorite-route' key={favorite.id}>
+                      <div>
+                        <div className='favorite-place'>
+                          <span>{favorite.origin}</span>
+                          <br />
+                          <span>{favorite.originLocation}</span>
+                        </div>
 
-            <div className='favorite-place'>
-              <span>{favorite.destination}</span>
-              <span>{favorite.destinationLocation}</span>
-            </div>
-          </div>
+                        <div className='favorite-place'>
+                          <span>{favorite.destination}</span>
+                          <br />
+                          <span>{favorite.destinationLocation}</span>
+                        </div>
+                      </div>
 
-          <div
-            onClick={() => handleFavoriteClick(favorite.origin, favorite.destination)}
-            role='button'
-            tabIndex='0'
-            data-id={favorite.id}
-          >
-            Ir
+                      <div
+                        onClick={() => handleFavoriteClick(favorite.origin, favorite.destination)}
+                        role='button'
+                        tabIndex='0'
+                        data-id={favorite.id}
+                      >
+                        Ir
+                      </div>
+
+                      <div className='favorite-icon-route'>
+                        <img src={starIcon} alt='Star' />
+                        <span>{favorite.count + 1}</span>
+                      </div>
+
+                    </div>
+                  ))}
+                </>
+              ) :
+                (
+                  <div>
+                    <p>Aún no tienes lugares favoritos</p>
+                  </div>
+                )
+            }
           </div>
-        </div>
-      ))}
-    </div>
+        ) :
+          (
+            <Link
+              to='/login'
+              className='btn btn-small btn-green-white'
+            >
+              Iniciar sesión
+            </Link>
+          )
+      }
+    </>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
     favorites: state.favorites,
+    user: state.user,
   };
 };
 

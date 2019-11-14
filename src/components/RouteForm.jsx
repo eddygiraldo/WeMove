@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { routeRequest, calledRequest } from '../actions';
 import '../assets/styles/components/Sidebar.scss';
 
 const RouteForm = (props) => {
 
-  const { currentRoute, route } = props;
+  const { currentRoute, route, user } = props;
+  const hasUser = Object.keys(user).length > 0;
 
   const [routeState, setState] = useState({
     origin: '',
@@ -58,40 +60,53 @@ const RouteForm = (props) => {
 
   return (
     <>
-      <input
-        type='text'
-        name='origin'
-        id='origin'
-        className='input input-small'
-        placeholder='Origen'
-        onChange={handleInput}
-        defaultValue={route ? route.origin : ''}
-      />
+      {
+        hasUser ? (
+          <>
+            <input
+              type='text'
+              name='origin'
+              id='origin'
+              className='input input-small'
+              placeholder='Origen'
+              onChange={handleInput}
+              defaultValue={route ? route.origin : ''}
+            />
 
-      <input
-        type='text'
-        name='destination'
-        id='destination'
-        className='input input-small'
-        placeholder='Destino'
-        onChange={handleInput}
-        defaultValue={route ? route.destination : ''}
-      />
+            <input
+              type='text'
+              name='destination'
+              id='destination'
+              className='input input-small'
+              placeholder='Destino'
+              onChange={handleInput}
+              defaultValue={route ? route.destination : ''}
+            />
 
-      {currentRoute && currentRoute.routes && (
-        <p>
-          {`${currentRoute.routes[0].legs[0].duration.text} (${currentRoute.routes[0].legs[0].distance.text})`}
-        </p>
-      )}
+            {currentRoute && currentRoute.routes && (
+              <p>
+                {`${currentRoute.routes[0].legs[0].duration.text} (${currentRoute.routes[0].legs[0].distance.text})`}
+              </p>
+            )}
 
-      <div
-        className='btn btn-small'
-        onClick={handleRouteClick}
-        role='button'
-        tabIndex='0'
-      >
-        Ir
-      </div>
+            <div
+              className='btn btn-small btn-green-white'
+              onClick={handleRouteClick}
+              role='button'
+              tabIndex='0'
+            >
+              Buscar ruta
+            </div>
+          </>
+        ) : (
+          <Link
+            to='/login'
+            className='btn btn-small btn-green-white'
+          >
+              Iniciar sesión
+          </Link>
+        )
+      }
     </>
   );
 };
@@ -100,6 +115,7 @@ const mapStateToProps = (state) => {
   return {
     currentRoute: state.currentRoute,
     route: state.route,
+    user: state.user,
   };
 };
 

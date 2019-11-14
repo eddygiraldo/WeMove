@@ -56,7 +56,7 @@ const Register = (props) => {
           </p>
 
           <Link to='/login'>
-            <div className='btn btn-transparent'>
+            <div className='btn btn-big btn-transparent'>
               Ingresar
             </div>
           </Link>
@@ -102,7 +102,7 @@ const Register = (props) => {
               placeholder='Contraseña'
             />
 
-            <button className='btn btn-submit' type='submit'>
+            <button className='btn btn-big btn-submit' type='submit'>
               Registrarse
             </button>
           </form>
