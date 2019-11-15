@@ -116,7 +116,7 @@ img {
 
 .input-small {
   width: 80%;
-  height: 40px;
+  min-height: 40px;
   border-radius: 20px;
   border-color: $second-color;
 }

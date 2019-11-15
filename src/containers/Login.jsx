@@ -27,7 +27,7 @@ const Login = (props) => {
       ...form,
       initials: form.email.charAt(0).toUpperCase(),
     });
-    props.history.push('/');
+    props.history.push('/livemap');
   };
 
   return (

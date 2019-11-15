@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 import { routeRequest, calledRequest } from '../actions';
 import '../assets/styles/components/Sidebar.scss';
 
@@ -83,12 +84,6 @@ const RouteForm = (props) => {
               defaultValue={route ? route.destination : ''}
             />
 
-            {currentRoute && currentRoute.routes && (
-              <p>
-                {`${currentRoute.routes[0].legs[0].duration.text} (${currentRoute.routes[0].legs[0].distance.text})`}
-              </p>
-            )}
-
             <div
               className='btn btn-small btn-green-white'
               onClick={handleRouteClick}
@@ -97,6 +92,21 @@ const RouteForm = (props) => {
             >
               Buscar ruta
             </div>
+
+            {currentRoute && currentRoute.routes && (
+              <>
+                <p>
+                  {`${currentRoute.routes[0].legs[0].duration.text} (${currentRoute.routes[0].legs[0].distance.text})`}
+                </p>
+                {
+                  currentRoute.routes[0].legs[0].steps.map((item) => (
+                    <p>
+                      {ReactHtmlParser(item.instructions) }
+                    </p>
+                  ))
+                }
+              </>
+            )}
           </>
         ) : (
           <Link
