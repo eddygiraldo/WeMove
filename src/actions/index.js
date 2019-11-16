@@ -9,20 +9,22 @@ export const setPlaces = (payload) => ({
 });
 
 export const loginRequest = (payload) => {
+  const headers = new Headers();
+  console.log(payload);
+  headers.append('Authorization', 'Basic ' + btoa(payload.email + ":" + payload.password));
   return (dispatch) => {
-    dispatch(loginData(payload));
 
-    fetch('https://rickandmortyapi.com/api/character/')
+    fetch('http://ssr.mrdato.com/auth/sign-in', {
+      method: 'POST',
+      credentials: 'include',
+      headers,
+    })
       .then((response) => response.json())
-      .then((data) => dispatch(setPlaces(data)))
+      .then((data) => dispatch(loginData(data)))
       .catch((error) => console.log(error));
+
   };
 };
-
-// {
-//   type: 'LOGIN_REQUEST',
-//   payload,
-// }
 
 export const logoutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
@@ -49,3 +51,7 @@ export const routeRequest = (payload) => ({
   payload,
 });
 
+export const getPlaces = (payload) => ({
+  type: 'GET_PLACES',
+  payload,
+});

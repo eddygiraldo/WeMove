@@ -4,7 +4,6 @@ import {
   withGoogleMap,
   GoogleMap,
   DirectionsRenderer,
-  TrafficLayer,
   Marker,
 } from 'react-google-maps';
 import { calledRequest, respondRoutesRequest } from '../actions';
@@ -64,6 +63,7 @@ const MapGoogle = (props) => {
       onClick={handleMapClick}
       options={{
         mapTypeControl: false,
+        fullscreenControl: false,
       }}
     >
       {mapState.data && called && <DirectionsRenderer directions={mapState.data} />}

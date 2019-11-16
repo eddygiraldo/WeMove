@@ -10,10 +10,15 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
+      const { user } = action.payload;
+      const names = user.name.split(',');
+      localStorage.setItem('token', user.id);
       return {
         ...state,
         user: {
-          ...action.payload,
+          name: user.name,
+          email: user.email,
+          initials: `${names[0].charAt(0)} ${names[1] ? names[1].charAt(0) : ''}`,
         },
       };
     case 'LOGOUT_REQUEST':

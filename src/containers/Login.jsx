@@ -11,6 +11,7 @@ const Login = (props) => {
 
   const [form, setValues] = useState({
     email: '',
+    password: '',
     initials: '',
   });
 
@@ -69,6 +70,7 @@ const Login = (props) => {
               name='password'
               className='input input-generic'
               placeholder='Contraseña'
+              onChange={handleInput}
             />
 
             <button type='submit' className='btn btn-big btn-submit'>
