@@ -4,9 +4,24 @@
 
 .favorite-route {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .favorite-place span {
   font-size: 18px;
+}
+
+.favorite-place-location {
+  font-size: 13px !important;
+}
+
+.favorite-icon-route  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorite-icon-route img {
+  width: 40px;
 }

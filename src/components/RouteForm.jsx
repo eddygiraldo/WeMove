@@ -65,9 +65,9 @@ const RouteForm = (props) => {
         hasUser ? (
           <>
             <input
+              id='origin'
               type='text'
               name='origin'
-              id='origin'
               className='input input-small'
               placeholder='Origen'
               onChange={handleInput}
@@ -75,9 +75,9 @@ const RouteForm = (props) => {
             />
 
             <input
+              id='destination'
               type='text'
               name='destination'
-              id='destination'
               className='input input-small'
               placeholder='Destino'
               onChange={handleInput}

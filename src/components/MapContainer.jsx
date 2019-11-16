@@ -63,16 +63,10 @@ const MapGoogle = (props) => {
       defaultZoom={14}
       onClick={handleMapClick}
       options={{
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-          position: google.maps.ControlPosition.LEFT_BOTTOM,
-        },
+        mapTypeControl: false,
       }}
-      
     >
       {mapState.data && called && <DirectionsRenderer directions={mapState.data} />}
-      <TrafficLayer autoUpdate />
       {mapState.addNew && (
         <Marker
           position={mapState.newPosition}

@@ -68,6 +68,17 @@ img {
   line-height: 2.8;
 }
 
+.btn-smaller {
+  height: 50px;
+  width: 50px;
+  font-size: 17px;
+  border-radius: 25px;
+  border: 2px solid white;
+  color: white;
+  background-color: $second-color;
+  line-height: 2.8;
+}
+
 .btn:hover {
   opacity: 0.9;
   text-decoration: underline;
@@ -137,4 +148,10 @@ img {
 
 .main {
   display: flex;
+}
+
+.separator {
+  width: 100%;
+  border-top: 1px solid $second-color;
+  padding: 5px 0;
 }

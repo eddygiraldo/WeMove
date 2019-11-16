@@ -29,36 +29,44 @@ const Favorites = (props) => {
               hasFavorites ? (
                 <>
                   {favorites.sort((a, b) => b.count - a.count).map((favorite) => (
-                    <div className='favorite-route' key={favorite.id}>
-                      <div>
-                        <div className='favorite-place'>
-                          <span>{favorite.origin}</span>
-                          <br />
-                          <span>{favorite.originLocation}</span>
+                    <>
+                      <div className='favorite-route' key={favorite.id}>
+                        <div>
+                          <div className='favorite-place'>
+                            <span>{favorite.originPlace}</span>
+                            <br />
+                            <span className='favorite-place-location'>
+                              {favorite.originLocation}
+                            </span>
+                          </div>
+
+                          <div className='favorite-place'>
+                            <span>{favorite.destinationPlace}</span>
+                            <br />
+                            <span className='favorite-place-location'>
+                              {favorite.destinationLocation}
+                            </span>
+                          </div>
                         </div>
 
-                        <div className='favorite-place'>
-                          <span>{favorite.destination}</span>
-                          <br />
-                          <span>{favorite.destinationLocation}</span>
+                        <div
+                          onClick={() => handleFavoriteClick(favorite.origin, favorite.destination)}
+                          role='button'
+                          tabIndex='0'
+                          data-id={favorite.id}
+                          className='btn btn-smaller btn-green-white'
+                        >
+                          Ir
                         </div>
-                      </div>
 
-                      <div
-                        onClick={() => handleFavoriteClick(favorite.origin, favorite.destination)}
-                        role='button'
-                        tabIndex='0'
-                        data-id={favorite.id}
-                      >
-                        Ir
-                      </div>
+                        <div className='favorite-icon-route'>
+                          <img src={starIcon} alt='Star' />
+                          <span>{favorite.count + 1}</span>
+                        </div>
 
-                      <div className='favorite-icon-route'>
-                        <img src={starIcon} alt='Star' />
-                        <span>{favorite.count + 1}</span>
                       </div>
-
-                    </div>
+                      <div className='separator' />
+                    </>
                   ))}
                 </>
               ) :

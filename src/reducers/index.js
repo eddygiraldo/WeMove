@@ -1,4 +1,13 @@
-const reducer = (state, action) => {
+const initialState = {
+  user: {},
+  favorites: [],
+  route: {},
+  called: false,
+  currentRoute: {},
+  test: {},
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
       return {
@@ -18,6 +27,11 @@ const reducer = (state, action) => {
         user: {
           ...action.payload,
         },
+      };
+    case 'SET_PLACES':
+      return {
+        ...state,
+        test: action.payload,
       };
     case 'CALLED_REQUEST':
       return {
@@ -44,9 +58,11 @@ const reducer = (state, action) => {
         const destinationPlace = action.payload.destination.split(',');
         element = {
           id: state.favorites.length + 1,
-          origin: originPlace[0],
+          origin: action.payload.origin,
+          originPlace: originPlace[0],
           originLocation: `${originPlace[1]}, ${originPlace[2]}`,
-          destination: destinationPlace[0],
+          destination: action.payload.destination,
+          destinationPlace: destinationPlace[0],
           destinationLocation: `${destinationPlace[1]}, ${destinationPlace[2]}`,
           count: 0,
         };
