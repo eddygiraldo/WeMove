@@ -5,12 +5,12 @@
   width: 35%;
   max-width: 500px;
   position: fixed;
-  margin: 60px 10px;
+  margin: 3px 3px;
   border-radius: 20px;
   overflow: hidden;
   transition: 1s;
   @media screen and (max-width: $max-width) {
-    width: 95%;
+    width: 98%;
   }
 }
 
