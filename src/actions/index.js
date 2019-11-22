@@ -23,6 +23,14 @@ export const loginRequest = (payload) => {
       .then((data) => dispatch(loginData(data)))
       .catch((error) => console.log(error));
 
+    fetch('http://api.mrdato.com/api/places', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((data) => dispatch(loginData(data)))
+      .catch((error) => console.log(error));
+
   };
 };
 
