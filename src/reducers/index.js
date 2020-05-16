@@ -10,16 +10,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
-      const { user } = action.payload;
-      const names = user.name.split(',');
-      localStorage.setItem('token', user.id);
       return {
         ...state,
-        user: {
-          name: user.name,
-          email: user.email,
-          initials: `${names[0].charAt(0)} ${names[1] ? names[1].charAt(0) : ''}`,
-        },
+        user: action.payload,
       };
     case 'LOGOUT_REQUEST':
       return {
@@ -49,8 +42,11 @@ const reducer = (state = initialState, action) => {
         currentRoute: action.payload,
       };
     case 'ROUTE_REQUEST':
-      const exist = state.favorites.find((fav) => (action.payload.origin.includes(fav.origin) &&
-        action.payload.destination.includes(fav.destination)));
+      const exist = state.favorites.find(
+        (fav) =>
+          action.payload.origin.includes(fav.origin) &&
+          action.payload.destination.includes(fav.destination),
+      );
 
       let element = {};
       if (exist) {

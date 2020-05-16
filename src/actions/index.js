@@ -9,28 +9,8 @@ export const setPlaces = (payload) => ({
 });
 
 export const loginRequest = (payload) => {
-  const headers = new Headers();
-  console.log(payload);
-  headers.append('Authorization', 'Basic ' + btoa(payload.email + ":" + payload.password));
   return (dispatch) => {
-
-    fetch('http://ssr.mrdato.com/auth/sign-in', {
-      method: 'POST',
-      credentials: 'include',
-      headers,
-    })
-      .then((response) => response.json())
-      .then((data) => dispatch(loginData(data)))
-      .catch((error) => console.log(error));
-
-    fetch('http://api.mrdato.com/api/places', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => dispatch(loginData(data)))
-      .catch((error) => console.log(error));
-
+    dispatch(loginData(payload));
   };
 };
 
